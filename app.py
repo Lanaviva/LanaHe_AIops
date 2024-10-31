@@ -11,6 +11,8 @@ chat_history = []
 PYTHON_CONCEPTS = {
     "loop": "In Python, loops (for and while) are used for iteration. Example: for i in range(5): print(i)",
     "list": "Lists are ordered collections in Python. Example: my_list = [1, 2, 3]. You can append, remove, and modify elements.",
+    "tuple": "A tuple is an ordered, immutable sequence of elements. \
+    Example: my_tuple=(). You can not change its elements after created.",
     "dictionary": "Dictionaries store key-value pairs. Example: my_dict = {'name': 'John', 'age': 25}",
     "function": "Functions are defined using 'def'. Example: def greet(name): return f'Hello {name}!'",
     "class": "Classes are blueprints for objects. Example: class Dog: def bark(self): return 'Woof!'"
@@ -18,13 +20,15 @@ PYTHON_CONCEPTS = {
 
 @app.route('/')
 def hello_world():
-    return '''
-    Welcome to the Python Learning Chat!
+    # 使用 HTML 的 <pre> 标签
+    # <pre> 标签会保留所有的换行和空白格式，这样可以正确显示多行文本。
+    return """<pre>Welcome to the Python Learning Chat!
     Available endpoints:
-    - /chat?message=your_message
-    - /history
-    - /learn?topic=python_concept
-    '''
+        - /chat?message=your_message
+        - /history
+        - /learn?topic=python_concept<pre>
+        """
+
 
 @app.route('/chat')
 def chat():
@@ -89,7 +93,6 @@ def provide_random_example():
         "Here's a try/except example: try:\n    result = 10/0\nexcept ZeroDivisionError:\n    print('Cannot divide by zero')"
     ]
     return random.choice(examples)
-
 
 
 #http://localhost:5000/chat?message=tell+me+about+lists
